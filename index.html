@@ -3,175 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saket's Portfolio - Full Stack Developer</title>
+    <title>Saket - Creative Developer & Designer</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-animation"></div>
+            </div>
+            <div class="loading-text">
+                <span class="loading-letter">S</span>
+                <span class="loading-letter">A</span>
+                <span class="loading-letter">K</span>
+                <span class="loading-letter">E</span>
+                <span class="loading-letter">T</span>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">Saket</span>
+                <div class="logo-container">
+                    <span class="logo-text">SAKET</span>
+                    <div class="logo-line"></div>
+                </div>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link" data-text="Home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="#about" class="nav-link" data-text="About">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#work" class="nav-link" data-text="Work">Work</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
+        <div class="hero-background">
+            <canvas id="hero-canvas"></canvas>
+            <div class="particles-container"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
                 <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Saket</span>
+                    <span class="title-line">
+                        <span class="title-word">Creative</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="title-word">Developer</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="title-word">& Designer</span>
+                    </span>
                 </h1>
-                <h2 class="hero-subtitle">Full Stack Developer</h2>
-                <p class="hero-description">
-                    I create beautiful, functional, and user-centered digital experiences. 
-                    Passionate about clean code and innovative solutions.
+                <p class="hero-subtitle">
+                    Crafting digital experiences that inspire and innovate
                 </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <div class="hero-cta">
+                    <button class="cta-button primary">
+                        <span class="button-text">Explore My Work</span>
+                        <span class="button-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </button>
+                    <button class="cta-button secondary">
+                        <span class="button-text">Get In Touch</span>
+                    </button>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <i class="fas fa-user-circle"></i>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-card" data-speed="0.5">
+                        <div class="card-content">
+                            <i class="fas fa-code"></i>
+                            <span>Code</span>
+                        </div>
                     </div>
-                    <div class="profile-info">
-                        <h3>Saket</h3>
-                        <p>Full Stack Developer</p>
+                    <div class="floating-card" data-speed="-0.3">
+                        <div class="card-content">
+                            <i class="fas fa-palette"></i>
+                            <span>Design</span>
+                        </div>
+                    </div>
+                    <div class="floating-card" data-speed="0.7">
+                        <div class="card-content">
+                            <i class="fas fa-rocket"></i>
+                            <span>Launch</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Scroll to explore</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-number">01</span>
+                    <span class="title-text">About Me</span>
+                </h2>
+                <div class="title-line"></div>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
-                        I'm a passionate full-stack developer with a love for creating 
-                        innovative digital solutions. With expertise in modern web technologies, 
-                        I build scalable applications that solve real-world problems.
-                    </p>
-                    <p>
-                        My journey in software development started with curiosity and has evolved 
-                        into a career focused on delivering exceptional user experiences through 
-                        clean, efficient code.
-                    </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Years Experience</span>
+                    <div class="text-block">
+                        <h3 class="text-heading">Passionate Creator</h3>
+                        <p class="text-paragraph">
+                            I'm a creative developer who bridges the gap between design and technology. 
+                            With over 5 years of experience crafting digital experiences, I specialize in 
+                            creating websites and applications that not only look stunning but also deliver 
+                            exceptional user experiences.
+                        </p>
+                    </div>
+                    <div class="text-block">
+                        <h3 class="text-heading">Innovation Driven</h3>
+                        <p class="text-paragraph">
+                            My approach combines cutting-edge technologies with timeless design principles. 
+                            I believe in creating solutions that are both beautiful and functional, pushing 
+                            the boundaries of what's possible on the web.
+                        </p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item" data-value="50">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Projects Completed</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Projects Completed</span>
+                        <div class="stat-item" data-value="5">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Years Experience</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Client Satisfaction</span>
+                        <div class="stat-item" data-value="100">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Client Satisfaction</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-code"></i>
+                <div class="about-visual">
+                    <div class="image-container">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                        <div class="image-overlay"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-number">02</span>
+                    <span class="title-text">Featured Work</span>
+                </h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="work-grid">
+                <div class="work-item" data-category="web">
+                    <div class="work-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3>E-Commerce Platform</h3>
+                                <p>Full-stack e-commerce solution with advanced features</p>
+                                <div class="tech-stack">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>A responsive task management application with real-time updates, drag-and-drop functionality, and team collaboration.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">CSS3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <div class="work-preview">
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Data Analytics Dashboard</h3>
-                        <p>Interactive dashboard for data visualization with real-time charts, filters, and export functionality.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Angular</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Python</span>
+                <div class="work-item" data-category="mobile">
+                    <div class="work-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3>Task Management App</h3>
+                                <p>Responsive task management with real-time collaboration</p>
+                                <div class="tech-stack">
+                                    <span>Vue.js</span>
+                                    <span>Firebase</span>
+                                    <span>PWA</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <div class="work-preview">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="web">
+                    <div class="work-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3>Data Analytics Dashboard</h3>
+                                <p>Interactive dashboard with real-time data visualization</p>
+                                <div class="tech-stack">
+                                    <span>Angular</span>
+                                    <span>D3.js</span>
+                                    <span>Python</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-preview">
+                            <i class="fas fa-chart-line"></i>
                         </div>
                     </div>
                 </div>
@@ -181,75 +266,110 @@
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-number">03</span>
+                    <span class="title-text">Skills & Technologies</span>
+                </h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3 class="category-title">Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="HTML5">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="95"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
+                        <div class="skill-item" data-skill="CSS3">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">CSS3</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="90"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
-                            <span>JavaScript</span>
+                        <div class="skill-item" data-skill="JavaScript">
+                            <div class="skill-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="88"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-vuejs"></i>
-                            <span>Vue.js</span>
+                        <div class="skill-item" data-skill="React">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">React</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="85"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
+                <div class="skills-category">
+                    <h3 class="category-title">Backend & Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Node.js">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="82"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
+                        <div class="skill-item" data-skill="Python">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="80"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>MongoDB</span>
+                        <div class="skill-item" data-skill="Git">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="90"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-server"></i>
-                            <span>Express.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Others</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-aws"></i>
-                            <span>AWS</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cloud"></i>
-                            <span>CI/CD</span>
+                        <div class="skill-item" data-skill="Docker">
+                            <div class="skill-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-level="75"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,58 +379,118 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-number">04</span>
+                    <span class="title-text">Get In Touch</span>
+                </h2>
+                <div class="title-line"></div>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's work together</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
+                    <h3 class="contact-heading">Let's Create Something Amazing Together</h3>
+                    <p class="contact-description">
+                        I'm always excited to work on new projects and collaborate with creative minds. 
+                        Whether you have a specific project in mind or just want to chat about possibilities, 
+                        I'd love to hear from you.
+                    </p>
                     <div class="contact-details">
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>saket@example.com</span>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">hello@saket.dev</span>
+                            </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">+1 (555) 123-4567</span>
+                            </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>New York, NY</span>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">San Francisco, CA</span>
+                            </div>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                <div class="contact-form">
+                    <form class="form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <span class="button-text">Send Message</span>
+                            <span class="button-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="logo-text">SAKET</span>
+                </div>
+                <div class="footer-nav">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; 2024 Saket. All rights reserved.</p>
-                <p>Built with ❤️ and modern web technologies</p>
+                <p>Built with passion and modern technologies</p>
             </div>
         </div>
     </footer>
